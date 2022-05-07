@@ -1,24 +1,31 @@
 <h1>Listado de Contactos</h1>
+{% include 'base.html' %}
 
-<ul>
-    {% for cliente in object_list %}
-        <li>
-            <p>{{ cliente.nombre }}</p>
-            <p>
-                <a href="{% url "porfolio:detail" cliente.id %}">Ver</a> | 
-                <a href="{% url "porfolio:edit" cliente.id %}">Editar</a> | 
-                <a href="{% url "porfolio:delete" cliente.id %}">Borrar</a> 
-            </p>
-        </li>
-        
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">nombre</th>
+      <th scope="col">opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cliente in object_list %}
+    <tr>
+      <th scope="row">{{cliente.id}}</th>
+      <td>{{ cliente.nombre }}</td>
+      <td><a href="{% url "porfolio:detail" cliente.id %}">Ver</a> </td>
+    </tr>
     {% endfor %}
-</ul>
+  </tbody>
+</table>
+
             <p>
                 <a href="{% url "porfolio:dash" %}">Regresar</a> |
                 <a href="{% url "porfolio:reporte_personas_excel" %}">Exportar a Excel</a> |
                 <div class="col-lg-1">
-    <a id="crear_detalle" href="#" class="btn btn-info btn-block">
-        <span class="glyphicon glyphicon-list-alt"></span>
-    </a>
+
 </div>
             </p>
+
+{% include 'footer.html' %}

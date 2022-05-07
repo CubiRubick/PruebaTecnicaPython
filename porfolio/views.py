@@ -12,7 +12,8 @@ from django.http.response import HttpResponse
 class porfolioDash(TemplateView):
     template_name = 'cliente_dash.html'
 
-        
+class porfolioSearch(TemplateView):
+    template_name = 'client_search.html'
 
 class porfolioList(ListView):
     model = cliente

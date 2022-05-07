@@ -1,0 +1,13 @@
+<div class="form-floating mb-3">
+                                <input class="form-control" name="buscar" required id="id_nombre" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <label for="id_nombre">Ingresa el nombre de quien quieres buscar</label>
+                            </div>
+
+
+<h1>Nombre: {{ cliente.nombre }}</h1>
+<p>Correo Electronico: <i>{{ cliente.email }}</i></p>
+<p>Numero Telefonico: <i>{{ cliente.numeroT }}</i></p>
+<p>descripcion: <i>{{ cliente.descripcion }}</i></p>
+<p>
+    <a href="{% url "porfolio:dash" %}">Regresar</a>
+</p>
