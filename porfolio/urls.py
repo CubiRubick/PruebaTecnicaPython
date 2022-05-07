@@ -8,7 +8,8 @@ from .views import (
     porfolioDetail,
     porfolioCreated,
     porfolioUpdate,
-    porfolioDetele
+    porfolioDetele,
+    ReportePersonasExcel
 )
 
 app_name = 'porfolio'
@@ -19,5 +20,6 @@ urlpatterns = [
     path('nuevo/', porfolioCreated.as_view(), name='new'),
     path('editar/(?P<pk>\d+)', porfolioUpdate.as_view(), name='edit'),
     path('borrar/(?P<pk>\d+)', porfolioDetele.as_view(), name='delete'),
+    path('reporte_personas_excel/',ReportePersonasExcel.as_view(), name="reporte_personas_excel"),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
