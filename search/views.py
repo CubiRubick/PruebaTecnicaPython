@@ -1,19 +1,14 @@
-from pydoc import cli
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from porfolio.models import cliente
-from search import serializers
 from search.serializers import ClientesSerializer
 
 @api_view(['GET', 'POST'])
 def client_list(request):
-    """
-    List all code Books, or create a new Book.
-    """
     if request.method == 'GET':
-        clientes = cliente.objects.all()
-        serializer = ClientesSerializer(clientes, many=True)
+        Clientes = cliente.objects.all()
+        serializer = ClientesSerializer(Clientes, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
@@ -25,9 +20,6 @@ def client_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def client_detail(request, pk):
-    """
-    Retrieve, update or delete a code snippet.
-    """
     try:
         clientes = cliente.objects.get(pk=pk)
     except cliente.DoesNotExist:
