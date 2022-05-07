@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'porfolio',
-    'search'
+    'search',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

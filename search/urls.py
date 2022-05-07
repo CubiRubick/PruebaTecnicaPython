@@ -4,7 +4,7 @@ from search import views
 
 urlpatterns = [
     path('api/', views.client_list), 
-    path('api/<pk>/', views.client_detail)  
+    path('api/<pk>/', views.client_detail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
