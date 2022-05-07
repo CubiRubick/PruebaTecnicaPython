@@ -1,0 +1,22 @@
+<h1>Cursos de Platzi</h1>
+
+<p>
+    <a href="{% url "porfolio:new" %}">Agregar curso</a>
+</p>
+
+<ul>
+    {% for cliente in object_list %}
+        <li>
+            <p>{{ cliente.nombre }}</p>
+            <p>
+                <a href="{% url "porfolio:detail" cliente.id %}">Ver</a> | 
+                <a href="{% url "porfolio:edit" cliente.id %}">Editar</a> | 
+                <a href="{% url "porfolio:delete" cliente.id %}">Borrar</a> 
+            </p>
+        </li>
+        
+    {% endfor %}
+</ul>
+            <p>
+                <a href="{% url "porfolio:dash" %}">Regresar</a> | 
+            </p>
