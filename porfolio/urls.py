@@ -15,13 +15,13 @@ from .views import (
 
 app_name = 'porfolio'
 urlpatterns = [
-    path('', porfolioDash.as_view(template_name = 'cliente_dash.html'), name='dash'),
+    path('', porfolioDash.as_view(), name='dash'),
     path('list/', porfolioList.as_view(), name='list'),
-    path('(?P<pk>\d+)', porfolioDetail.as_view(), name='detail'),
+    path('<slug:pk>', porfolioDetail.as_view(), name='detail'),
     path('nuevo/', porfolioCreated.as_view(), name='new'),
-    path('editar/(?P<pk>\d+)', porfolioUpdate.as_view(), name='edit'),
-    path('borrar/(?P<pk>\d+)', porfolioDetele.as_view(), name='delete'),
+    path('editar/<slug:pk>', porfolioUpdate.as_view(), name='edit'),
+    path('borrar/<slug:pk>', porfolioDetele.as_view(), name='delete'),
     path('reporte_personas_excel/',ReportePersonasExcel.as_view(), name="reporte_personas_excel"),
-    path('busqueda/', porfolioSearch.as_view(template_name = 'client_search.html'), name='search'),
+    path('busqueda/', porfolioSearch.as_view(), name='search'),
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
