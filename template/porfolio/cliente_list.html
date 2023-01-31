@@ -1,30 +1,55 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>Listado de Contactos</h1>
-            <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">nombre</th>
-      <th scope="col">opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for cliente in object_list %}
-    <tr>
-      <th scope="row">{{cliente.id}}</th>
-      <td>{{ cliente.nombre }}</td>
-      <td><a href="{% url "porfolio:detail" cliente.id %}">Ver</a> </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-            <p>
-                <a href="{% url "porfolio:dash" %}">Regresar</a> |
-                <a href="{% url "porfolio:reporte_personas_excel" %}">Exportar a Excel</a> |
-                <div class="col-lg-1">
-
+<header class="masthead">
+<div class="container-fluid">
+  <h1 class="text-center" style="color:#fff">Listado de Contactos</h1>
+  <form class="ms-1 form-floating" action="{% url 'porfolio:list' %}" method="GET">
+      <input class="form-control mt-3" name="buscar" id="id_nombre" type="text" placeholder="Enter your name..." value="{{ request.GET.buscar }}" />
+      <label for="id_nombre">Ingresa el nombre de quien quieres buscar</label>
+      <div class="mt-3 ms-4 mb-5">
+          <button class="btn btn-primary btn-xl" id="submitButton" type="submit" value="submit">Buscar</button>
+      </div>
+      <div class="mt-3">
+        <a href="{% url 'porfolio:list' %}"><button class="btn btn-primary btn-xl">Limpiar filtro</button></a>
+      </div>
+  </form>
+  <div class="row">
+    <div class="col-12">
+      <table id="tabla" class="ms-1 table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for cliente in object_list %}
+          <tr>
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.email }}</td>
+            <td><a href="{% url "porfolio:detail" cliente.id %}">Ver</a> </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="text-center">
+        <a href="{% url "porfolio:dash" %}"><button class="btn btn-primary btn-xl">Regresar</button></a>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="text-center">
+        <a href="{% url "porfolio:reporte_personas_excel" %}"><button class="btn btn-primary btn-xl">Exportar a Excel</button></a>
+      </div>
+    </div>
+  </div>
 </div>
-            </p>
+</header>
 {% endblock %}

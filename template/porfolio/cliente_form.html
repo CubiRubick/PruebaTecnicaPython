@@ -35,7 +35,7 @@
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="numeroT" required id="id_numeroT" type="number" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <input class="form-control" name="numeroT" maxlength="10" minlength="10" pattern="[0-9]+" required id="id_numeroT" type="text" placeholder="(123) 456-7890" data-sb-validations="required" />
                                 <label for="id_numeroT">Phone number</label>
                                 <div class="invalid-feedback" data-sb-feedback="id_numeroT:required">A phone number is required.</div>
                             </div>

@@ -4,24 +4,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
     porfolioDash,
-    porfolioList,
     porfolioDetail,
     porfolioCreated,
     porfolioUpdate,
     porfolioDetele,
     ReportePersonasExcel,
-    porfolioSearch
+    porfolioSearch,
+    listar_cliente
 )
 
 app_name = 'porfolio'
 urlpatterns = [
     path('', porfolioDash.as_view(), name='dash'),
-    path('list/', porfolioList.as_view(), name='list'),
+    path('list/', listar_cliente, name='list'),
     path('<slug:pk>', porfolioDetail.as_view(), name='detail'),
     path('nuevo/', porfolioCreated.as_view(), name='new'),
     path('editar/<slug:pk>', porfolioUpdate.as_view(), name='edit'),
     path('borrar/<slug:pk>', porfolioDetele.as_view(), name='delete'),
     path('reporte_personas_excel/',ReportePersonasExcel.as_view(), name="reporte_personas_excel"),
-    path('busqueda/', porfolioSearch.as_view(), name='search'),
+    path('busqueda/', porfolioSearch.as_view(), name='searchs'),
 
 ]

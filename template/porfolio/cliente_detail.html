@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ cliente.nombre }}</h1>
-<p>Correo Electronico: <i>{{ cliente.email }}</i></p>
-<p>Numero Telefonico: <i>{{ cliente.numeroT }}</i></p>
-<p>descripcion: <i>{{ cliente.descripcion }}</i></p>
-<p>
-    <a href="{% url "porfolio:list" %}">Regresar</a>
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="mt-5 ms-5 col-12">
+            <h1>{{ cliente.nombre }}</h1>
+            <p>Correo Electronico: <i>{{ cliente.email }}</i></p>
+            <p>Numero Telefonico: <i>{{ cliente.numeroT }}</i></p>
+            <p>descripcion: <i>{{ cliente.descripcion }}</i></p>
+            <p>
+                <a href="{% url "porfolio:list" %}">Regresar</a>
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

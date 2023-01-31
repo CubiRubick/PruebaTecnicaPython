@@ -6,6 +6,7 @@ from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import cliente
+from django.db.models import Q
 from openpyxl import Workbook
 from django.http.response import HttpResponse
 # Create your views here.
@@ -15,8 +16,18 @@ class porfolioDash(TemplateView):
 class porfolioSearch(TemplateView):
     template_name = 'client_search.html'
 
-class porfolioList(ListView):
-    model = cliente
+def listar_cliente(request):
+    busqueda = request.GET.get('buscar')
+    if busqueda:
+        clientes = cliente.objects.filter(Q(nombre__icontains=busqueda)|Q(email__icontains=busqueda)).distinct()
+    else:
+        clientes = cliente.objects.all()
+    
+    context = {
+            'object_list':clientes
+        }
+    return render(request, 'porfolio/cliente_list.html', context)
+
 
 class porfolioDetail(DetailView):
     model = cliente
