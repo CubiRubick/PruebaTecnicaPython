@@ -7,7 +7,6 @@ from .views import (
     porfolioDetail,
     porfolioCreated,
     porfolioUpdate,
-    porfolioDetele,
     ReportePersonasExcel,
     porfolioSearch,
     listar_cliente
@@ -20,7 +19,6 @@ urlpatterns = [
     path('<slug:pk>', porfolioDetail.as_view(), name='detail'),
     path('nuevo/', porfolioCreated.as_view(), name='new'),
     path('editar/<slug:pk>', porfolioUpdate.as_view(), name='edit'),
-    path('borrar/<slug:pk>', porfolioDetele.as_view(), name='delete'),
     path('reporte_personas_excel/',ReportePersonasExcel.as_view(), name="reporte_personas_excel"),
     path('busqueda/', porfolioSearch.as_view(), name='searchs'),
 

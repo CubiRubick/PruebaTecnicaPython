@@ -9,8 +9,11 @@
             <p>descripcion: <i>{{ cliente.descripcion }}</i></p>
             <p>
                 <a href="{% url "porfolio:list" %}">Regresar</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
+                <a href="{% url "porfolio:edit" cliente.id %}">Editar</a>
             </p>
         </div>
     </div>
 </div>
+{% block modal %}{% endblock %}
 {% endblock %}

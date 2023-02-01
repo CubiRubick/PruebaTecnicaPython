@@ -29,8 +29,9 @@ def listar_cliente(request):
     return render(request, 'porfolio/cliente_list.html', context)
 
 
-class porfolioDetail(DetailView):
+class porfolioDetail(DetailView, DeleteView):
     model = cliente
+    success_url = reverse_lazy('porfolio:list')
 
 class porfolioCreated(CreateView):
     model = cliente
@@ -41,10 +42,6 @@ class porfolioUpdate(UpdateView):
     model = cliente
     success_url = reverse_lazy('porfolio:list')
     fields = ['nombre', 'email', 'numeroT', 'descripcion']
-
-class porfolioDetele(DeleteView):
-    model = cliente
-    success_url = reverse_lazy('porfolio:list')
 
 #Nuestra clase hereda de la vista genérica TemplateView
 class ReportePersonasExcel(TemplateView):
