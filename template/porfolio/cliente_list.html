@@ -2,15 +2,19 @@
 {% load static %}
 {% block content %}
 <header class="masthead">
-<div class="container-fluid">
+<div class="container">
   <h1 class="text-center" style="color:#fff">Listado de Contactos</h1>
   <form class="ms-1 form-floating" action="{% url 'porfolio:list' %}" method="GET">
-      <input class="form-control mt-3" name="buscar" id="id_nombre" type="text" placeholder="Enter your name..." value="{{ request.GET.buscar }}" />
-      <label for="id_nombre">Ingresa el nombre de quien quieres buscar</label>
+  <div class="row justify-content-md-center">
+    <div class="form-floating mb-3 col-sm-6">
+      <input class="form-control" name="buscar" id="id_nombre" type="text" placeholder="Enter your name..." value="{{ request.GET.buscar }}" />
+      <label class="ms-3" for="id_nombre">Ingresa el nombre de quien quieres buscar</label>
+    </div>
       <div class="mt-3 ms-4 mb-5 text-center">
           <button class="btn btn-primary btn-xl" id="submitButton" type="submit" value="submit">Buscar</button>
           <button class="btn btn-primary btn-xl ms-5" type="submit" value="submit" onclick="limpiar()">Limpiar filtro</button>
       </div>
+    </div>
   </form>
   <div class="row">
     <div class="col-12">

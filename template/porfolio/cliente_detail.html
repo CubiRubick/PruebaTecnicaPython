@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+<header class="masthead">
 <div class="container-fluid">
     <div class="row">
-        <div class="mt-5 ms-5 col-12">
-            <h1>{{ cliente.nombre }}</h1>
+        <div class="mt-5 ms-5 col-12 text-center" style="color:#fff">
+            <h1 class="text-center" style="color:#fff">Detalles de usuario</h1>
+            <p>Nombre: <i>{{ cliente.nombre }}</i></p>
             <p>Correo Electronico: <i>{{ cliente.email }}</i></p>
             <p>Numero Telefonico: <i>{{ cliente.numeroT }}</i></p>
-            <p>descripcion: <i>{{ cliente.descripcion }}</i></p>
+            <p>descripcion</p>
+            <i>{{ cliente.descripcion }}</i>
+            <div class="mt-5">
             <p>
-                <a href="{% url "porfolio:list" %}">Regresar</a>
+                <a href="{% url "porfolio:list" %}"><button type="button" class="btn btn-primary">Regresar</button></a>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
-                <a href="{% url "porfolio:edit" cliente.id %}">Editar</a>
+                <a href="{% url "porfolio:edit" cliente.id %}"><button type="button" class="btn btn-primary">Editar</button></a>
             </p>
+            </div>
         </div>
     </div>
 </div>
+</header>
 {% block modal %}{% endblock %}
 {% endblock %}
