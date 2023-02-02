@@ -1,5 +1,8 @@
 from django.db import models
 
+class User(models.Model):
+    name = models.CharField(max_length=120, blank=True, null=True)
+
 # Create your models here.
 class cliente(models.Model):
     nombre = models.CharField(max_length=50)
